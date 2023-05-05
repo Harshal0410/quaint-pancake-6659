@@ -1,5 +1,8 @@
 package com.company.services;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import com.company.entities.Course;
@@ -40,9 +43,19 @@ public class StudentRoleImpl implements StudentRoles{
 	}
 
 	@Override
-	public void viewAllCourses(Map<Integer, Course> courses) throws CourseException {
+	public List<Course> viewAllCourses(Map<String, Course> courses) throws CourseException {
 		// TODO Auto-generated method stub
+		List<Course> list = null;
 		
+		if(courses != null && courses.size() > 0) {
+			Collection<Course> col = courses.values();
+			list = new ArrayList<>(col);
+		}
+		else {
+			throw new CourseException("No course available");
+		}
+		
+		return list;
 	}
 
 }

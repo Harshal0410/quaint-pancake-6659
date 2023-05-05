@@ -1,5 +1,6 @@
 package com.company.services;
 
+import java.util.List;
 import java.util.Map;
 
 import com.company.entities.Course;
@@ -14,5 +15,5 @@ public interface StudentRoles {
 
 	public void signUp(Student st, Map<String, Student> students) throws DuplicateDataException;
 	
-	public void viewAllCourses(Map<Integer, Course> courses) throws CourseException;
+	public List<Course> viewAllCourses(Map<String, Course> courses) throws CourseException;
 }
