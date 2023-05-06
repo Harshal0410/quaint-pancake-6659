@@ -1,22 +1,24 @@
 package com.company.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Course implements Serializable{
 	
 	String courseName;
 	int seats;
-	Date startDate;
-	Date endDate;
-	public Course(String courseName, int seats, Date startDate, Date endDate) {
+	LocalDate startDate;
+	LocalDate endDate;
+	
+	public Course(String courseName, int seats, LocalDate startDate, LocalDate endDate) {
 		super();
 		this.courseName = courseName;
 		this.seats = seats;
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
+	
 	public String getCourseName() {
 		return courseName;
 	}
@@ -29,16 +31,16 @@ public class Course implements Serializable{
 	public void setSeats(int seats) {
 		this.seats = seats;
 	}
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 	@Override

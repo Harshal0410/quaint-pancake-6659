@@ -16,4 +16,6 @@ public interface StudentRoles {
 	public void signUp(Student st, Map<String, Student> students) throws DuplicateDataException;
 	
 	public List<Course> viewAllCourses(Map<String, Course> courses) throws CourseException;
+	
+	public void register(Map<String, Course> courses, String name, String email, Map<String,Student> register) throws InvalidDetailsException;
 }

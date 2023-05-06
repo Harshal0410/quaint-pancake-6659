@@ -57,5 +57,9 @@ public class StudentRoleImpl implements StudentRoles{
 		
 		return list;
 	}
+	
+	public void register(Map<String, Course> courses, String name, String email, Map<String,Student> register) throws InvalidDetailsException {
+//		if(Course)
+	}
 
 }
