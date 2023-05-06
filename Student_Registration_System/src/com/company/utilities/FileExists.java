@@ -12,7 +12,7 @@ import com.company.entities.Student;
 
 public class FileExists {
 
-	public Map<String, Student> studentFile() {
+	public static Map<String, Student> studentFile() {
 
 		Map<String, Student> data = null;
 		File f = new File("Students.ser");
@@ -42,7 +42,7 @@ public class FileExists {
 		return data;
 	}
 
-	public Map<String, Course> courseFile() {
+	public static Map<String, Course> courseFile() {
 
 		Map<String, Course> data = null;
 		File f = new File("Courses.ser");
@@ -72,5 +72,33 @@ public class FileExists {
 		return data;
 	}
 
+	public static Map<String, Student> registerFile() {
 
+		Map<String, Student> data = null;
+		File f = new File("Register.ser");
+		boolean flag = false;
+
+		try {
+
+			if (!f.exists()) {
+				f.createNewFile();
+				flag = true;
+			}
+
+			if (flag) {
+				data = new LinkedHashMap<>();
+				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
+				oos.writeObject(data);
+				oos.flush();
+				return data;
+			} else {
+				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+				data = (Map<String, Student>) ois.readObject();
+				return data;
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return data;
+	}
 }
