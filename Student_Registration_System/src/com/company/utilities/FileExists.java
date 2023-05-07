@@ -14,7 +14,7 @@ public class FileExists {
 
 	public static Map<String, Student> studentFile() {
 
-		Map<String, Student> data = null;
+		Map<String, Student> data = new LinkedHashMap<>();
 		File f = new File("Students.ser");
 		boolean flag = false;
 
@@ -26,10 +26,9 @@ public class FileExists {
 			}
 
 			if (flag) {
-				data = new LinkedHashMap<>();
 				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
 				oos.writeObject(data);
-				oos.flush();
+//				oos.flush();
 				return data;
 			} else {
 				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
@@ -44,7 +43,7 @@ public class FileExists {
 
 	public static Map<String, Course> courseFile() {
 
-		Map<String, Course> data = null;
+		Map<String, Course> data = new LinkedHashMap<>();
 		File f = new File("Courses.ser");
 		boolean flag = false;
 
@@ -56,12 +55,12 @@ public class FileExists {
 			}
 
 			if (flag) {
-				data = new LinkedHashMap<>();
 				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
 				oos.writeObject(data);
-				oos.flush();
+//				oos.flush();
 				return data;
-			} else {
+			} 
+			else {
 				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
 				data = (Map<String, Course>) ois.readObject();
 				return data;
@@ -74,7 +73,7 @@ public class FileExists {
 
 	public static Map<String, Student> registerFile() {
 
-		Map<String, Student> data = null;
+		Map<String, Student> data = new LinkedHashMap<>();
 		File f = new File("Register.ser");
 		boolean flag = false;
 
@@ -86,10 +85,9 @@ public class FileExists {
 			}
 
 			if (flag) {
-				data = new LinkedHashMap<>();
 				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
 				oos.writeObject(data);
-				oos.flush();
+//				oos.flush();
 				return data;
 			} else {
 				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
