@@ -16,6 +16,7 @@ public class StudentRoleImpl implements StudentRoles{
 	@Override
 	public boolean login(String email, String password, Map<String, Student> students) throws InvalidDetailsException {
 		// TODO Auto-generated method stub
+		
 		if(students.containsKey(email)) {
 			
 			if(students.get(email).getPassword().equals(password)) {
@@ -45,6 +46,7 @@ public class StudentRoleImpl implements StudentRoles{
 	@Override
 	public List<Course> viewAllCourses(Map<String, Course> courses) throws CourseException {
 		// TODO Auto-generated method stub
+		
 		List<Course> list = null;
 		
 		if(courses != null && courses.size() > 0) {
@@ -58,8 +60,22 @@ public class StudentRoleImpl implements StudentRoles{
 		return list;
 	}
 	
-	public void register(Map<String, Course> courses, String name, String email, Map<String,Student> register) throws InvalidDetailsException {
-//		if(Course)
+	public void register(Map<String, Course> courses, String name, String email, Map<String,Student> register, Map<String,Student> students) throws InvalidDetailsException {
+		if(courses.containsKey(name)) {
+			if(students.containsKey(email)) {
+				Student s = students.get(email);
+				courses.get(name).setSeats(courses.get(name).getSeats()-1);
+				register.put(name, s);
+				System.out.println("Registration successful");
+			}
+			else {
+				throw new InvalidDetailsException("Please enter the correct email");
+			}
+			
+		}
+		else {
+			throw new InvalidDetailsException("No such course exist!");
+		}
 	}
 
 }
