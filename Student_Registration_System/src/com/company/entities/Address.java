@@ -3,6 +3,7 @@ package com.company.entities;
 import java.io.Serializable;
 
 public class Address implements Serializable{
+	
 	String city;
 	String state;
 	int pincode;
@@ -31,5 +32,8 @@ public class Address implements Serializable{
 		this.pincode = pincode;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Address [city=" + city + ", state=" + state + ", pincode=" + pincode + "]";
+	}
 }

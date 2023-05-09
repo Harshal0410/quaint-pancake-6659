@@ -8,7 +8,7 @@ public class Student implements Serializable{
 	Address address;
 	String mobNumber;
 	String email;
-	String password;
+	private String password;
 	
 	public Student(String firstName, String lastName, Address address, String mobNumber, String email,
 			String password) {

@@ -28,6 +28,7 @@ public class Main {
 		
 		adminLogin(sc);
 		AdminRoleImpl a = new AdminRoleImpl();
+		StudentRoleImpl sr = new StudentRoleImpl();
 		
 		int choice = 0;
 		try {
@@ -58,8 +59,11 @@ public class Main {
 					break;
 					
 				case 4:
+					adminDeleteStudent(sc,a,students);
 					break;
 				case 5:
+					List<Course> list = sr.viewAllCourses(courses);
+					System.out.println(list);
 					break;
 				case 6:
 					System.out.println("Logout successful");
@@ -74,6 +78,20 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public static void adminDeleteStudent(Scanner sc,AdminRoleImpl a,Map<String, Student> students) {
+		
+		System.out.println("Please enter the email of student");
+		String email = sc.next();
+		
+		try {
+			a.deleteStudent(students, email);
+		} catch (InvalidDetailsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public static void adminAddCourse(Scanner sc,AdminRoleImpl a,Map<String, Course> courses) {
 		
@@ -138,7 +156,7 @@ public class Main {
 				System.out.println("Select the option of your choice");
 				System.out.println("Press 1 to view all courses");
 				System.out.println("Press 2 to register in a course");
-				System.out.println("Press 3 to update student details");
+				System.out.println("Press 3 to update password");
 				System.out.println("Press 4 to logout");
 				choice = sc.nextInt();
 				
@@ -159,6 +177,7 @@ public class Main {
 					break;
 				
 				case 3:
+					updatePassword(sc,students,sr);
 					break;
 					
 				case 4:
@@ -174,6 +193,23 @@ public class Main {
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
+		}
+	}
+	
+	public static void updatePassword(Scanner sc,Map<String, Student> students,StudentRoleImpl sr) {
+		
+		System.out.println("Please enter your email id");
+		String email = sc.next();
+		System.out.println("Please enter the old password");
+		String oldPass = sc.next();
+		System.out.println("Please enter the new password");
+		String newPass = sc.next();
+		
+		try {
+			sr.changePassword(students, email, oldPass, newPass);
+		} catch (InvalidDetailsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
