@@ -18,4 +18,6 @@ public interface StudentRoles {
 	public List<Course> viewAllCourses(Map<String, Course> courses) throws CourseException;
 	
 	public void register(Map<String, Course> courses, String name, String email, Map<String,Student> register,Map<String,Student> students) throws InvalidDetailsException;
+	
+	public void changePassword(Map<String, Student> students,String email,String oldPass,String newPass) throws InvalidDetailsException;
 }

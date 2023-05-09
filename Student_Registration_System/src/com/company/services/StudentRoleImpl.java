@@ -78,4 +78,23 @@ public class StudentRoleImpl implements StudentRoles{
 		}
 	}
 
+	@Override
+	public void changePassword(Map<String, Student> students, String email,String oldPass,String newPass) throws InvalidDetailsException {
+		// TODO Auto-generated method stub
+		if(students.containsKey(email)) {
+			Student s = students.get(email);
+			if(oldPass.equals(s.getPassword())) {
+				s.setPassword(newPass);
+				students.put(email,s);
+				System.out.println("Password updated");
+			}else {
+				throw new InvalidDetailsException("The password entered dosent match the old password");
+			}
+			
+		}
+		else {
+			throw new InvalidDetailsException("No student is register with this email id");
+		}
+	}
+
 }

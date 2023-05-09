@@ -8,16 +8,16 @@ import com.company.entities.Student;
 import com.company.exceptions.DuplicateDataException;
 import com.company.exceptions.InvalidDetailsException;
 
-public class AdminRoleImpl implements AdminRole{
+public class AdminRoleImpl implements AdminRole {
 
 	@Override
-	public void addCourse(Map<String, Course> courses,String courseName,int seats,LocalDate start,LocalDate end) throws DuplicateDataException {
+	public void addCourse(Map<String, Course> courses, String courseName, int seats, LocalDate start, LocalDate end)
+			throws DuplicateDataException {
 		// TODO Auto-generated method stub
-		if(courses.containsKey(courseName)) {
+		if (courses.containsKey(courseName)) {
 			throw new DuplicateDataException("The course already exist!");
-		}
-		else {
-			Course c = new Course(courseName,seats,start,end);
+		} else {
+			Course c = new Course(courseName, seats, start, end);
 			courses.put(courseName, c);
 			System.out.println("Course added successfully");
 		}
@@ -26,38 +26,47 @@ public class AdminRoleImpl implements AdminRole{
 	@Override
 	public void studentDetails(Map<String, Student> students) throws InvalidDetailsException {
 		// TODO Auto-generated method stub
-		if(students.size() == 0) {
+		if (students.size() == 0) {
 			System.out.println("No students yet...");
-		}
-		else {
-			for(Map.Entry<String ,Student> m : students.entrySet()) {
+		} else {
+			for (Map.Entry<String, Student> m : students.entrySet()) {
 				System.out.println(m.getValue());
 			}
 		}
 	}
 
 	@Override
-	public void studentBatchwise(Map<String, Student> register,String courseName) throws InvalidDetailsException{
+	public void studentBatchwise(Map<String, Student> register, String courseName) throws InvalidDetailsException {
 		// TODO Auto-generated method stub
-		
-		if(!register.containsKey(courseName)) {
+
+		if (!register.containsKey(courseName)) {
 			throw new InvalidDetailsException("No such course present");
 		}
-		
-		if(register.size() == 0) {
+
+		if (register.size() == 0) {
 			System.out.println("No students yet...");
-		}
-		else {
+		} else {
 			int count = 0;
-			for(Map.Entry<String ,Student> m : register.entrySet()) {			
-				if(m.getKey().equals(courseName)) {
-					System.out.println(m.getValue());	
+			for (Map.Entry<String, Student> m : register.entrySet()) {
+				if (m.getKey().equals(courseName)) {
+					System.out.println(m.getValue());
 					count++;
 				}
 			}
-			if(count == 0) {
+			if (count == 0) {
 				System.out.println("No student has enrolled in this course yet");
 			}
+		}
+	}
+
+	@Override
+	public void deleteStudent(Map<String, Student> students, String email) throws InvalidDetailsException {
+		// TODO Auto-generated method stub
+		if (students.containsKey(email)) {
+			students.remove(email);
+			System.out.println("Student deleted successfully");
+		} else {
+			throw new InvalidDetailsException("Student with email id " + email + "is not present");
 		}
 	}
 
