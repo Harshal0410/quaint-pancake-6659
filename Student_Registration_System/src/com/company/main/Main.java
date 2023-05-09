@@ -33,12 +33,14 @@ public class Main {
 		int choice = 0;
 		try {
 			do {
+				System.out.println("========================================");
 				System.out.println("Press 1 add the course");
 				System.out.println("Press 2 view all the students");
 				System.out.println("Press 3 to see student course wise");
 				System.out.println("Press 4 to delete student information");
 				System.out.println("Press 5 view all courses");
 				System.out.println("Press 6 to log out");
+				System.out.println("========================================");
 				choice = sc.nextInt();
 				
 				
@@ -95,6 +97,7 @@ public class Main {
 	
 	public static void adminAddCourse(Scanner sc,AdminRoleImpl a,Map<String, Course> courses) {
 		
+		System.out.println("====================================================");
 		System.out.println("Please enter the name of the course");
 		String courseName = sc.next();
 		System.out.println("Please enter the number of seats available");
@@ -103,7 +106,7 @@ public class Main {
 		String date1 = sc.next();
 		System.out.println("Please enter the end date in (dd/MM/yyyy) format");
 		String date2 = sc.next();
-		
+		System.out.println("====================================================");
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate start = LocalDate.parse(date1, format);
 		LocalDate end = LocalDate.parse(date2, format);
@@ -118,11 +121,12 @@ public class Main {
 	
 	public static void adminLogin(Scanner sc) throws InvalidDetailsException{
 		
+		System.out.println("===========================================");
 		System.out.println("Please enter the username");
 		String userName = sc.next();
 		System.out.println("Please enter the password");
 		String pass = sc.next();
-		
+		System.out.println("===========================================");
 		if(userName.equals(Admin.username)) {
 			if(pass.equals(Admin.password)) {
 				System.out.println("Login successful");
@@ -142,22 +146,26 @@ public class Main {
 		
 		StudentRoleImpl sr = new StudentRoleImpl();
 		
+		System.out.println("=============================================");
 		System.out.println("Please enter the following details to logIn");
 		System.out.println("Please enter the email");
 		String email = sc.next();
 		System.out.println("Please enter the password");
 		String pass = sc.next();
+		
 		sr.login(email, pass, students);
 		System.out.println("login successfull");
-		
+		System.out.println("=============================================");
 		try {
 			int choice = 0;
 			do {
+				System.out.println("========================================");
 				System.out.println("Select the option of your choice");
 				System.out.println("Press 1 to view all courses");
 				System.out.println("Press 2 to register in a course");
 				System.out.println("Press 3 to update password");
 				System.out.println("Press 4 to logout");
+				System.out.println("========================================");
 				choice = sc.nextInt();
 				
 				switch(choice) {
@@ -198,13 +206,14 @@ public class Main {
 	
 	public static void updatePassword(Scanner sc,Map<String, Student> students,StudentRoleImpl sr) {
 		
+		System.out.println("========================================");
 		System.out.println("Please enter your email id");
 		String email = sc.next();
 		System.out.println("Please enter the old password");
 		String oldPass = sc.next();
 		System.out.println("Please enter the new password");
 		String newPass = sc.next();
-		
+		System.out.println("========================================");
 		try {
 			sr.changePassword(students, email, oldPass, newPass);
 		} catch (InvalidDetailsException e) {
@@ -237,6 +246,7 @@ public class Main {
 	}
 	
 	public static void studentSignup(Scanner sc, Map<String, Student> students) throws DuplicateDataException {
+		System.out.println("===============================================");
 		System.out.println("please enter the following details to Signup");
 		System.out.println("please enter the first name");
 		String firstName = sc.next();
@@ -264,7 +274,7 @@ public class Main {
 		StudentRoleImpl studentInfo = new StudentRoleImpl();
 		studentInfo.signUp(cus, students);
 		System.out.println("Student details added successfully");
-
+		System.out.println("=================================================");
 	}
 	
 	
@@ -276,8 +286,9 @@ public class Main {
 		Map<String, Student> students = FileExists.studentFile();
 		Map<String, Student> register = FileExists.registerFile();
 		
+		System.out.println("========================================");
 		System.out.println("Welcome to student registration system");
-		
+		System.out.println("========================================");
 		try {
 			int choice = 0;
 			do {
@@ -285,6 +296,7 @@ public class Main {
 				System.out.println("Press 2 for student login");
 				System.out.println("Press 3 for student registration");
 				System.out.println("Press 0 to exit the system");
+				System.out.println("========================================");
 				choice = sc.nextInt();
 				
 				switch(choice) {
