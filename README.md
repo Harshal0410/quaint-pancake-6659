@@ -12,22 +12,23 @@ This project is divided into two parts:
 
 ## Admin 
 
-- Admin can add new course
+- Admin can add new car
 
-- Admin can view student details
+- Admin can view car list
 
-- Admin can view student details couser-wise
+- Admin can update car details
 
-- Admin can see all courses and update it
+- Admin can delete a car
 
-- Admin can delete a student
-## Student
+## Customer
 
-- Student can signup and login
+- Customer can signup and login
 
-- Student can see all courses
+- Customer can search car by(brand or model)
 
-- Student can register for a course
+- Customer can view car details
 
-- Student can update student details
+- Customer can rent car
+
+- Customer can see thier reservations
 
